@@ -76,6 +76,7 @@ def solicitar_tramite(request):
             solicitud.usuario = request.user
             solicitud.save()
 
+            
             # 📧 ENVÍO DE CORREO
             send_mail(
                 subject='📄 Trámite recibido - PuntoZero',
@@ -93,8 +94,8 @@ def solicitar_tramite(request):
 
                 Gracias por usar PuntoZero.
                 ''',
-                from_email=settings.EMAIL_HOST_USER,
-                recipient_list=[solicitud.correo],
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[settings.EMAIL_HOST_USER],
                 fail_silently=False,
             )
 
