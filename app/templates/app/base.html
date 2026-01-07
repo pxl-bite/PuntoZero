@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PuntoZero</title>
+    <!-- Fuente Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <!-- Tu CSS -->
+    <link rel="stylesheet" href="{% static 'app/styles.css' %}">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">Punto<span>Zero</span></div>
+        <nav class="nav">
+            <a href="{% url 'inicio' %}">Inicio</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'dashboard' %}">Servicios</a>
+                <a href="{% url 'logout' %}">Cerrar sesión</a>
+            {% else %}
+                <a href="{% url 'login' %}">Iniciar sesión</a>
+                <a href="{% url 'registro' %}">Registrarse</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <!-- Hero opcional (puedes usarlo solo en la página de inicio) -->
+    {% block hero %}
+    {% endblock %}
+
+    <!-- Contenido principal -->
+    <main>
+        <div class="container">
+            {% block contenido %}
+            {% endblock %}
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Fernando Dorantes Delgado</p>
+    </footer>
+
+</body>
+</html>

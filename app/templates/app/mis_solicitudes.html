@@ -1,0 +1,52 @@
+{% extends "app/base.html" %}
+
+{% block title %}Mis Solicitudes{% endblock %}
+
+{% block contenido %}
+<div class="container" style="padding: 50px 20px;">
+    <h2 style="text-align:center; margin-bottom:30px; color:#0077b6;">Mis Solicitudes</h2>
+
+    <div style="overflow-x:auto;">
+        <table style="width:100%; border-collapse: collapse; min-width: 600px;">
+            <thead>
+                <tr style="background-color:#03045e; color:white;">
+                    <th style="padding:12px; text-align:left;">Trámite</th>
+                    <th style="padding:12px; text-align:left;">Nombre</th>
+                    <th style="padding:12px; text-align:left;">CURP</th>
+                    <th style="padding:12px; text-align:left;">Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for s in solicitudes %}
+                <tr style="border-bottom:1px solid #ddd; transition: background 0.3s;">
+                    <td style="padding:12px;">{{ s.get_tipo_tramite_display }}</td>
+                    <td style="padding:12px;">{{ s.nombre }}</td>
+                    <td style="padding:12px;">{{ s.curp }}</td>
+                    <td style="padding:12px;">{{ s.fecha_solicitud }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" style="padding:12px; text-align:center;">No hay solicitudes registradas</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    table tr:hover {
+        background-color: #caf0f8;
+    }
+
+    @media (max-width:768px) {
+        table {
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            padding: 8px;
+        }
+    }
+</style>
+{% endblock %}

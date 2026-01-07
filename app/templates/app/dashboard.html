@@ -1,0 +1,24 @@
+{% extends "app/base.html" %}
+
+{% block title %}Servicios{% endblock %}
+
+{% block hero %}
+<section class="hero">
+    <div class="hero-content">
+        <h1>Hola, {{ user.username }}</h1>
+        <p>Bienvenido a tu panel de control</p>
+    </div>
+</section>
+{% endblock %}
+
+{% block contenido %}
+<div style="max-width: 500px; margin: 40px auto; padding: 30px; background-color: white; border-radius: 10px; box-shadow: 0 3px 8px rgba(0,0,0,0.15); text-align:center;">
+    <h2 style="color:#03045e; margin-bottom: 25px;">Servicios</h2>
+
+    <div style="display:flex; flex-direction:column; gap: 20px;">
+        <a href="{% url 'solicitar_tramite' %}" class="btn" style="text-decoration:none; display:block;">Solicitar trámite</a>
+        <a href="{% url 'mis_solicitudes' %}" class="btn" style="text-decoration:none; display:block;">Ver mis solicitudes</a>
+        <a href="{% url 'logout' %}" class="btn" style="background-color:#d90429;">Cerrar sesión</a>
+    </div>
+</div>
+{% endblock %}

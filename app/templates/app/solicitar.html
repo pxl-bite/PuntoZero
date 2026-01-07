@@ -1,0 +1,66 @@
+{% extends "app/base.html" %}
+{% load widget_tweaks %}
+
+{% block title %}Solicitar Trámite{% endblock %}
+
+{% block contenido %}
+<div class="container" style="max-width:600px; margin:80px auto; padding:30px; background-color:white; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+    <h2 style="text-align:center; margin-bottom:25px; color:#03045e;">Solicitar Trámite</h2>
+
+    <form method="post" style="display:flex; flex-direction:column; gap:15px;">
+        {% csrf_token %}
+
+        {% if form.errors %}
+            <div style="color:red; text-align:center;">
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <label for="{{ form.nombre.id_for_label }}">Nombre</label>
+        {{ form.nombre|add_class:"input-field" }}
+
+        <label for="{{ form.apellido_paterno.id_for_label }}">Apellido Paterno</label>
+        {{ form.apellido_paterno|add_class:"input-field" }}
+
+        <label for="{{ form.apellido_materno.id_for_label }}">Apellido Materno</label>
+        {{ form.apellido_materno|add_class:"input-field" }}
+
+        <label for="{{ form.curp.id_for_label }}">CURP</label>
+        {{ form.curp|add_class:"input-field" }}
+
+        <label for="{{ form.correo.id_for_label }}">Correo Electrónico</label>
+        {{ form.correo|add_class:"input-field" }}
+
+        <label for="{{ form.whatsapp.id_for_label }}">WhatsApp</label>
+        {{ form.whatsapp|add_class:"input-field" }}
+
+        <label for="{{ form.tipo_tramite.id_for_label }}">Tipo de Trámite</label>
+        {{ form.tipo_tramite|add_class:"input-field" }}
+
+        <button type="submit" class="btn" style="width:100%;">Enviar Solicitud</button>
+    </form>
+</div>
+
+<style>
+.input-field {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    width: 100%;
+    transition: border 0.3s;
+}
+
+.input-field:focus {
+    border-color: #03045e;
+    outline: none;
+}
+</style>
+{% endblock %}

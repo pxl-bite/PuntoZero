@@ -1,0 +1,59 @@
+{% extends "app/base.html" %}
+{% load widget_tweaks %}
+
+{% block title %}Registro{% endblock %}
+
+{% block contenido %}
+<div style="max-width: 500px; margin: 80px auto; padding: 30px; background-color: white; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <h2 style="text-align:center; margin-bottom: 25px; color:#03045e;">Registro</h2>
+
+    <form method="POST" action="{% url 'registro' %}">
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+            <div style="color:red; text-align:center; margin-bottom:15px;">
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% for field in form %}
+        <div style="margin-bottom: 15px;">
+            <label for="{{ field.id_for_label }}" style="display:block; margin-bottom:5px; color:#0077b6;">
+                {{ field.label }}
+            </label>
+            {{ field|add_class:"input-field" }}
+            {% if field.help_text %}
+                <small style="color:gray; display:block; margin-top:3px;">{{ field.help_text }}</small>
+            {% endif %}
+            {% if field.errors %}
+                <p style="color:red; margin-top:5px;">{{ field.errors|striptags }}</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+
+        <button type="submit" class="btn" style="width:100%;">Registrarse</button>
+    </form>
+
+    <p style="text-align:center; margin-top:15px;">
+        ¿Ya tienes cuenta? <a href="{% url 'login' %}" style="color:#00b4d8;">Inicia sesión</a>
+    </p>
+</div>
+
+<style>
+.input-field {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    width: 100%;
+    transition: border 0.3s;
+}
+
+.input-field:focus {
+    border-color: #03045e;
+    outline: none;
+}
+</style>
+{% endblock %}

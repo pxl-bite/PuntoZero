@@ -1,0 +1,284 @@
+/* =================Base================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ================= Header hecho con Flex ================= */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background-color: #03045e;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.logo span {
+  color: #00b4d8;
+}
+
+.nav {
+  display: flex;
+  gap: 25px;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav a:hover {
+  color: #90e0ef;
+}
+
+/* ================= Sección Hero================= */
+.hero {
+  background: linear-gradient(135deg, #0077b6, #90e0ef);
+  color: white;
+  text-align: center;
+  padding: 120px 20px;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.hero-content span {
+  color: #03045e;
+  background-color: #caf0f8;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+
+.btn {
+  margin-top: 20px;
+  background-color: #03045e;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 1rem;
+}
+
+.btn:hover {
+  background-color: #00b4d8;
+  transform: translateY(-3px);
+}
+
+/* ================= Galeria con GRID ================= */
+.portfolio {
+  padding: 60px 40px;
+}
+
+.portfolio h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #0077b6;
+  font-size: 2rem;
+}
+
+/* GRID layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+/* Imgs hechas en Card */
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s;
+}
+
+/* Efecto hover */
+.card:hover img {
+  transform: scale(1.1);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.card:hover .overlay {
+  opacity: 1;
+}
+
+/* ================= Sección del footer ================= */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #03045e;
+  color: white;
+  padding: 20px 40px;
+  flex-wrap: wrap;
+}
+
+.social {
+  display: flex;
+  gap: 20px;
+}
+
+.social a {
+  color: #90e0ef;
+  text-decoration: none;
+}
+
+.social a:hover {
+  color: #00b4d8;
+}
+
+/* ================= Responsive================= */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+}
+
+/* ================= Formularios ================== */
+form {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+form h2 {
+  text-align: center;
+  color: #03045e;
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+}
+
+label {
+  font-weight: 500;
+  color: #03045e;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  padding: 12px 15px;
+  border: 1px solid #90e0ef;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #00b4d8;
+  box-shadow: 0 0 5px rgba(0,180,216,0.5);
+}
+
+button[type="submit"] {
+  background-color: #03045e;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #00b4d8;
+  transform: translateY(-2px);
+}
+
+/* Mensajes de error y éxito */
+.errorlist {
+  color: #d90429;
+  font-size: 0.9rem;
+  list-style: none;
+  padding-left: 0;
+}
+
+.messages {
+  text-align: center;
+  font-size: 1rem;
+  padding: 10px 0;
+}
+
+.messages .success {
+  color: #0077b6;
+}
+
+.messages .error {
+  color: #d90429;
+}
+
+/* Ajustes responsive para formularios */
+@media (max-width: 768px) {
+  form {
+    margin: 30px 20px;
+    padding: 25px;
+  }
+
+  form h2 {
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,41 @@
+{% extends "app/base.html" %}
+
+{% block title %}Iniciar Sesión{% endblock %}
+
+{% block hero %}
+<section class="hero">
+    <div class="hero-content">
+        <h1>Bienvenido de nuevo</h1>
+        <p>Ingresa tu usuario o correo y contraseña para continuar</p>
+    </div>
+</section>
+{% endblock %}
+
+{% block contenido %}
+<div style="max-width:400px; margin:40px auto; padding:20px; background:white; border-radius:10px; box-shadow:0 3px 8px rgba(0,0,0,0.15);">
+    <h2 style="text-align:center; margin-bottom:20px; color:#03045e;">Iniciar Sesión</h2>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color:red; text-align:center;">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div style="margin-bottom:15px;">
+            <label for="id_username" style="display:block; margin-bottom:5px; color:#0077b6;">Usuario o correo:</label>
+            <input type="text" id="id_username" name="username" class="w-full p-2 border border-gray-300 rounded-md" required>
+        </div>
+        <div style="margin-bottom:20px;">
+            <label for="id_password" style="display:block; margin-bottom:5px; color:#0077b6;">Contraseña:</label>
+            <input type="password" id="id_password" name="password" class="w-full p-2 border border-gray-300 rounded-md" required>
+        </div>
+        <button type="submit" class="btn" style="width:100%;">Iniciar Sesión</button>
+    </form>
+
+    <p style="text-align:center; margin-top:15px;">
+        ¿No tienes cuenta? <a href="{% url 'registro' %}" style="color:#00b4d8;">Regístrate aquí</a>
+    </p>
+</div>
+{% endblock %}
